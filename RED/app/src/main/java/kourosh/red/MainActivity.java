@@ -1,5 +1,7 @@
 package kourosh.red;
 
+import android.annotation.SuppressLint;
+import android.os.StrictMode;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +14,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,10 +23,13 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import static android.R.id.primary;
 
 public class MainActivity extends FragmentActivity {
-
+    protected static Connection connection = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +41,25 @@ public class MainActivity extends FragmentActivity {
 
         // Set the ViewPagerAdapter into ViewPager
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
     }
 
+    //connection class
+    @SuppressLint("NewApi")
+    protected static Connection connectionclass () {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        String connectionURL;
+        if (connection == null) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                connectionURL = "jdbc:mysql://68.147.220.198:3306/cpsc471";
+                connection = DriverManager.getConnection(connectionURL, "root", "aldeko16");
+
+            } catch (Exception e) {
+                Log.e("Error: ", e.getMessage());
+            }
+        }
+        return connection;
+    }
 }
