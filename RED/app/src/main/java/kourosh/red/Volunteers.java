@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,36 +21,13 @@ public class Volunteers extends Fragment {
                              Bundle savedInstanceState) {
         // Get the view from volenteersml
         View view = inflater.inflate(R.layout.volunteers, container, false);
+
+
+        ArrayList<Volunteer> volunteers = Volunteer.getVolunteers();
+
+        VolunteerAdapter adapter = new VolunteerAdapter(getContext(),volunteers);
+        ListView lv = (ListView) view.findViewById(R.id.listview);
+        lv.setAdapter(adapter);
         return view;
     }
-
-    public void onResume(){
-        super.onResume();
-
-
-       Connection conn = MainActivity.connectionclass();
-
-        try {
-//            List result = new ArrayList()
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT ID,Name,sum(Hours) FROM volunteers GROUPBY ID");
-            while(rs.next()){
-                rs.getInt(1);
-                rs.getString(2);
-                rs.getInt(3);
-            }
-
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-
-        //Set the adapter
-        //create on click
-
-    }
-
 }
