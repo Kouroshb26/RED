@@ -1,11 +1,13 @@
 package kourosh.red;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.sql.Connection;
@@ -22,13 +24,22 @@ public class Volunteers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Get the view from volenteersml
+        // Get the view from volenteersxml
         view = inflater.inflate(R.layout.volunteers, container, false);
 
         final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         ArrayList<Volunteer> volunteers = Volunteer.getVolunteers();
         adapter = new VolunteerAdapter(getContext(), volunteers);
-        lv = (ListView) view.findViewById(R.id.listview);
+        lv = (ListView) view.findViewById(R.id.lv);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(getActivity(),VolunteerEntity.class);
+                startActivity(intent);
+            }
+
+        });
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

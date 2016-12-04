@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/volenteer"
-        android:id="@+id/listview"
+        android:id="@+id/lv"
         android:layout_alignParentEnd="true" />
     </android.support.v4.widget.SwipeRefreshLayout>
 

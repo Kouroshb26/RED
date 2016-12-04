@@ -18,20 +18,11 @@ public class VolunteerEntity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.volunteer,menu);
+        getMenuInflater().inflate(R.menu.menu,menu);
         return true;
     }
 
@@ -45,12 +36,8 @@ public class VolunteerEntity extends AppCompatActivity {
             case R.id.save:
 
                 return true;
-            case R.id.cancel:
+            case R.id.delete:
                 return true;
-
-
-
-
 
         }
 
@@ -60,4 +47,6 @@ public class VolunteerEntity extends AppCompatActivity {
     protected void updateVolunteer(){
 
     }
+
 }
+

@@ -30,16 +30,14 @@ public class Equipments extends Fragment {
 
         final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         ArrayList<Equipment> equipments = Equipment.getEquipment();
-        adapter = new EquipmentAdapter(getContext(),equipments);
+        adapter = new EquipmentAdapter(getContext(), equipments);
         lv = (ListView) view.findViewById(R.id.lv);
-        lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent intent = new Intent();
-
-
+                Intent intent = new Intent(getActivity(),VolunteerEntity.class);
+                startActivity(intent);
 
             }
 
