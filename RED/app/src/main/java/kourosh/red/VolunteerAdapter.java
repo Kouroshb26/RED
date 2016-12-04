@@ -34,7 +34,10 @@ public class VolunteerAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {return i;}
-
+    public void update(ArrayList<Volunteer> items){
+        volunteerlist = items;
+        notifyDataSetChanged();
+    }
     @Override
     public View getView(int i, View view, ViewGroup parent) {
         View rowVolunteer = mInflater.inflate(R.layout.volunteer, parent,false);

@@ -32,6 +32,7 @@ public class EquipmentAdapter extends BaseAdapter {
     @Override
     public Object getItem(int i) {return equipmentlist.get(i);}
 
+
     @Override
     public long getItemId(int i) {return i;}
     public void update(ArrayList<Equipment> items){

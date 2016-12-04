@@ -34,7 +34,10 @@ public class ExecutiveAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {return i;}
-
+    public void update(ArrayList<Executive> items){
+        executivelist = items;
+        notifyDataSetChanged();
+    }
     @Override
     public View getView(int i, View view, ViewGroup parent) {
         View rowExecutive = mInflater.inflate(R.layout.executive, parent,false);

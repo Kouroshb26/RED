@@ -34,6 +34,10 @@ public class PresentationAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {return i;}
+    public void update(ArrayList<Presentation> items){
+        presentationlist = items;
+        notifyDataSetChanged();
+    }
 
     @Override
     public View getView(int i, View view, ViewGroup parent) {

@@ -34,6 +34,10 @@ public class EventAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {return i;}
+    public void update(ArrayList<Event> items){
+        eventlist = items;
+        notifyDataSetChanged();
+    }
 
     @Override
     public View getView(int i, View view, ViewGroup parent) {

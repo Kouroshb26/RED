@@ -23,12 +23,15 @@
         android:textColor="@color/colorAccent"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/school"/>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/school">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/school"
         android:id="@+id/lv"
         android:layout_alignParentEnd="true" />
-
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>
