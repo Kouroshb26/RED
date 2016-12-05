@@ -81,7 +81,7 @@ public class ExecutiveEntity extends AppCompatActivity {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Position FROM executives as v, members as m WHERE v.ID_no="+id+" AND v.ID_no = m.ID_no");
             if (rs.next()) {
-                this.id = (EditText) findViewById(R.id.name);
+                this.id = (EditText) findViewById(R.id.id);
                 this.id.setText(String.valueOf(rs.getInt(1)));
 
                 name = (EditText) findViewById(R.id.name);

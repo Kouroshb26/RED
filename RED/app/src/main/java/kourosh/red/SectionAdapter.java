@@ -42,7 +42,7 @@ public class SectionAdapter extends BaseAdapter {
         Section section = sectionlist.get(i);
 
 
-        TextView tv = (TextView)rowSection.findViewById(R.id.drug);
+        TextView tv = (TextView)rowSection.findViewById(R.id.id);
         tv.setText(section.section);
 
         tv = (TextView)rowSection.findViewById(R.id.finished);

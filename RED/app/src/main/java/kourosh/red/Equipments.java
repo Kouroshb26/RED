@@ -21,6 +21,7 @@ public class Equipments extends Fragment {
     View view;
     ListView lv;
     EquipmentAdapter adapter;
+    ArrayList<Equipment> equipments;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,16 +30,16 @@ public class Equipments extends Fragment {
         view = inflater.inflate(R.layout.equipments, container, false);
 
         final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        ArrayList<Equipment> equipments = Equipment.getEquipment();
+        equipments = Equipment.getEquipment();
         adapter = new EquipmentAdapter(getContext(), equipments);
         lv = (ListView) view.findViewById(R.id.lv);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent intent = new Intent(getActivity(),VolunteerEntity.class);
+                Intent intent = new Intent(getActivity(),EquipmentEntity.class);
+                intent.putExtra("id",String.valueOf(equipments.get(position).id));
                 startActivity(intent);
-
             }
 
         });
@@ -48,7 +49,7 @@ public class Equipments extends Fragment {
 
             @Override
             public void onRefresh() {
-                ArrayList<Equipment> equipments = Equipment.getEquipment();
+                equipments = Equipment.getEquipment();
                 adapter.update(equipments);
                 lv.setAdapter(adapter);
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -60,7 +61,7 @@ public class Equipments extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ArrayList<Equipment> equipments = Equipment.getEquipment();
+        equipments = Equipment.getEquipment();
         adapter.update(equipments);
         lv.setAdapter(adapter);
     }

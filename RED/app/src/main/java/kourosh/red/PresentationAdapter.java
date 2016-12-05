@@ -45,7 +45,7 @@ public class PresentationAdapter extends BaseAdapter {
         Presentation presentation = presentationlist.get(i);
 
 
-        TextView tv = (TextView)rowPresenation.findViewById(R.id.drug);
+        TextView tv = (TextView)rowPresenation.findViewById(R.id.id);
         tv.setText(String.valueOf(presentation.drug));
 
         tv = (TextView)rowPresenation.findViewById(R.id.finished);

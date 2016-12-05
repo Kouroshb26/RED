@@ -20,13 +20,14 @@ public class Presentations extends Fragment {
     View view;
     ListView lv;
     PresentationAdapter adapter;
+    ArrayList<Presentation> presentations;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Get the view from events.xmll
         view = inflater.inflate(R.layout.presentations, container, false);
         final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        ArrayList<Presentation> presentations = Presentation.getPresentation();
+        presentations= Presentation.getPresentation();
         adapter = new PresentationAdapter(getContext(), presentations);
         lv = (ListView) view.findViewById(R.id.lv);
 
@@ -34,7 +35,8 @@ public class Presentations extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent intent = new Intent(getActivity(),VolunteerEntity.class);
+                Intent intent = new Intent(getActivity(),PresentationEntity.class);
+                intent.putExtra("drug",presentations.get(position).drug);
                 startActivity(intent);
             }
 
@@ -43,7 +45,7 @@ public class Presentations extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ArrayList<Presentation> presentations = Presentation.getPresentation();
+                presentations = Presentation.getPresentation();
                 adapter.update(presentations);
                 lv.setAdapter(adapter);
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -54,7 +56,7 @@ public class Presentations extends Fragment {
     }
     public void onResume() {
         super.onResume();
-        ArrayList<Presentation> presentations = Presentation.getPresentation();
+        presentations = Presentation.getPresentation();
         adapter.update(presentations);
         lv.setAdapter(adapter);
     }
