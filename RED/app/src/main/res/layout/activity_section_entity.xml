@@ -7,6 +7,19 @@
     android:fitsSystemWindows="true"
     tools:context="kourosh.red.VolunteerEntity">
 
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:text="Start Time:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView23"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/start"
+        android:layout_alignBottom="@+id/start"
+        android:layout_alignParentStart="true" />
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:id="@+id/appBarLayout"
@@ -22,41 +35,30 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:text="Name:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/name"
-        android:layout_alignBottom="@+id/name"
-        android:layout_alignParentStart="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
         android:ems="10"
-        android:layout_below="@+id/name"
-        android:id="@+id/date"
+        android:enabled="false"
+        android:id="@+id/school"
+        android:text="School"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_below="@+id/appBarLayout"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView3" />
+        android:layout_toEndOf="@+id/textView10" />
 
     <TextView
         android:layout_marginLeft="10dp"
-        android:text="Date:"
+        android:text="School:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
+        android:id="@+id/textView10"
         android:layout_marginRight="5dp"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/date"
-        android:layout_alignBottom="@+id/date"
+        android:layout_alignBaseline="@+id/school"
+        android:layout_alignBottom="@+id/school"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -64,13 +66,52 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:enabled="false"
-        android:id="@+id/name"
-        android:text="Meeting"
+        android:id="@+id/date"
+        android:text="Jan 25th"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:layout_below="@+id/appBarLayout"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView2" />
+        android:layout_below="@+id/school"
+        android:layout_toEndOf="@+id/textView19" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:enabled="false"
+        android:id="@+id/section"
+        android:text="1"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_below="@+id/date"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView20" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:text="Date:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView19"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/date"
+        android:layout_alignBottom="@+id/date"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:text="Section:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView20"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/section"
+        android:layout_alignBottom="@+id/section"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -78,87 +119,77 @@
         android:inputType="textPersonName"
         android:text="Name"
         android:ems="10"
-        android:layout_below="@+id/date"
+        android:id="@+id/room"
+        android:layout_below="@+id/section"
         android:layout_alignParentEnd="true"
-        android:id="@+id/location"
-        android:layout_toEndOf="@+id/textView10" />
+        android:layout_toEndOf="@+id/textView21" />
 
     <TextView
         android:layout_marginLeft="10dp"
-        android:text="Location:"
+        android:text="Room:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView10"
+        android:id="@+id/textView21"
         android:layout_marginRight="5dp"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/location"
-        android:layout_alignBottom="@+id/location"
+        android:layout_alignBaseline="@+id/room"
+        android:layout_alignBottom="@+id/room"
         android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="time"
+        android:text="10:00"
         android:ems="10"
-        android:layout_below="@+id/location"
+        android:id="@+id/start"
+        android:layout_below="@+id/room"
         android:layout_alignParentEnd="true"
-        android:id="@+id/starttime"
-        android:layout_toEndOf="@+id/textView4" />
-
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:text="Start Time:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView4"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/starttime"
-        android:layout_alignBottom="@+id/starttime"
-        android:layout_alignParentStart="true" />
+        android:layout_toEndOf="@+id/textView23" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="time"
+        android:text="12:00"
         android:ems="10"
-        android:id="@+id/endtime"
-        android:layout_below="@+id/starttime"
+        android:id="@+id/end"
+        android:layout_below="@+id/start"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView5" />
+        android:layout_toEndOf="@+id/textView22"
+        android:inputType="time" />
 
     <TextView
         android:layout_marginLeft="10dp"
         android:text="End Time:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
+        android:id="@+id/textView22"
         android:layout_marginRight="5dp"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:layout_alignBaseline="@+id/endtime"
-        android:layout_alignBottom="@+id/endtime"
+        android:layout_alignBaseline="@+id/end"
+        android:layout_alignBottom="@+id/end"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Executives Attending:"
+        android:layout_marginLeft="10dp"
+        android:text="Presentation:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView6"
+        android:id="@+id/textView24"
+        android:layout_marginRight="5dp"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"/>
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lv"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/end"
         android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/end"
+        android:id="@+id/spinner"
+        android:layout_toEndOf="@+id/textView24" />
+
 
 </RelativeLayout>

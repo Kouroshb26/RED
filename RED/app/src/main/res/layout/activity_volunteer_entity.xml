@@ -22,18 +22,60 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/paid"
+        android:layout_below="@+id/joindate"
+        android:layout_alignStart="@+id/email" />
+
+    <TextView
+        android:text="Paid:"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView15"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/paid"
+        android:layout_alignBottom="@+id/paid"
+        android:layout_alignParentStart="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:enabled="false"
-        android:layout_below="@+id/appBarLayout"
         android:id="@+id/id"
         android:text="10149436"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
+        android:layout_below="@+id/appBarLayout"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView10" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Kourosh Banaeianzadeh"
+        android:ems="10"
+        android:id="@+id/name"
+        android:layout_below="@+id/id"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView11" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/email"
+        android:text="kouroshb26@gmail.com"
+        android:layout_below="@+id/name"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView12" />
 
     <TextView
         android:layout_marginLeft="10dp"
@@ -87,19 +129,6 @@
         android:layout_alignBottom="@+id/faculty"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:text="Join Date:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView14"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/joindate"
-        android:layout_alignBottom="@+id/joindate"
-        android:layout_alignParentStart="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,28 +143,6 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/email"
-        android:text="kouroshb26@gmail.com"
-        android:layout_below="@+id/name"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView12" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Kourosh Banaeianzadeh"
-        android:ems="10"
-        android:id="@+id/name"
-        android:layout_below="@+id/id"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView11" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
         android:id="@+id/joindate"
@@ -144,24 +151,18 @@
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView14" />
 
-    <CheckBox
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:text="Join Date:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/paid"
-        android:layout_below="@+id/joindate"
-        android:layout_alignStart="@+id/email" />
-
-    <SeekBar
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:max="10"
-        android:progress="1"
-        android:id="@+id/seekBar"
-        android:layout_alignBottom="@+id/textView9"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/rating"
-        />
+        android:id="@+id/textView14"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/joindate"
+        android:layout_alignBottom="@+id/joindate"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Rating:"
@@ -176,6 +177,17 @@
         android:layout_alignBottom="@+id/rating"
         android:layout_alignParentStart="true" />
 
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:progress="1"
+        android:id="@+id/seekBar"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/rating" />
+
     <EditText
         android:layout_width="30dp"
         android:layout_height="wrap_content"
@@ -184,33 +196,7 @@
         android:ems="10"
         android:id="@+id/rating"
         android:layout_below="@+id/paid"
-        android:layout_alignStart="@+id/name" />
-
-    <TextView
-        android:text="Total hours:"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView17"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/totalhours"
-        android:layout_alignBottom="@+id/totalhours"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Paid:"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView15"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/paid"
-        android:layout_alignBottom="@+id/paid"
-        android:layout_alignParentStart="true" />
+        android:layout_toEndOf="@+id/textView9" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -225,12 +211,25 @@
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView17" />
 
+    <TextView
+        android:text="Total hours:"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView17"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/totalhours"
+        android:layout_alignBottom="@+id/totalhours"
+        android:layout_alignParentStart="true" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lv"
         android:layout_below="@+id/totalhours"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

@@ -20,6 +20,7 @@ public class Meetings extends Fragment {
     View view;
     ListView lv;
     MeetingAdapter adapter;
+    ArrayList<Meeting> meetings;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class Meetings extends Fragment {
 
 
         final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        ArrayList<Meeting> meetings = Meeting.getMeeting();
+        meetings = Meeting.getMeeting();
         adapter = new MeetingAdapter(getContext(), meetings);
         lv = (ListView) view.findViewById(R.id.lv);
 
@@ -36,14 +37,15 @@ public class Meetings extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                 int position, long id) {
-                Intent intent = new Intent(getActivity(), VolunteerEntity.class);
+                Intent intent = new Intent(getActivity(), MeetingEntity.class);
+                intent.putExtra("name",meetings.get(position).name);
                 startActivity(intent);
             }
         });
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ArrayList<Meeting> meetings = Meeting.getMeeting();
+                meetings = Meeting.getMeeting();
                 adapter.update(meetings);
                 lv.setAdapter(adapter);
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -54,7 +56,7 @@ public class Meetings extends Fragment {
     public void onResume() {
         super.onResume();
 
-        ArrayList<Meeting> meetings = Meeting.getMeeting();
+        meetings = Meeting.getMeeting();
         adapter.update(meetings);
         lv.setAdapter(adapter);
     }

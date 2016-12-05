@@ -20,6 +20,7 @@ public class Events extends Fragment {
     View view;
     EventAdapter adapter;
     ListView lv;
+    ArrayList<Event> events;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,13 +31,15 @@ public class Events extends Fragment {
 
 
         final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        ArrayList<Event> events = Event.getEvent();
+        events = Event.getEvent();
         adapter = new EventAdapter(getContext(), events);
         lv = (ListView) view.findViewById(R.id.lv);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                Intent intent = new Intent(getActivity(), VolunteerEntity.class);
+                Intent intent = new Intent(getActivity(), EventEntity.class);
+                intent.putExtra("school",events.get(position).school);
+                intent.putExtra("date",events.get(position).date);
                 startActivity(intent);
             }
         });
@@ -45,7 +48,7 @@ public class Events extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                ArrayList<Event> events = Event.getEvent();
+                events = Event.getEvent();
                 adapter.update(events);
                 lv.setAdapter(adapter);
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -59,7 +62,7 @@ public class Events extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ArrayList<Event> events = Event.getEvent();
+        events = Event.getEvent();
         adapter.update(events);
         lv.setAdapter(adapter);
     }

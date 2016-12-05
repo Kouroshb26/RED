@@ -27,7 +27,7 @@ public class ExecutiveEntity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_volunteer_entity);
+        setContentView(R.layout.activity_executive_entity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         int id = getIntent().getExtras().getInt("id");
@@ -56,6 +56,7 @@ public class ExecutiveEntity extends AppCompatActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                finish();
                 return true;
             case R.id.delete:
                 try {
@@ -64,6 +65,7 @@ public class ExecutiveEntity extends AppCompatActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                finish();
                 return true;
 
         }
@@ -79,7 +81,7 @@ public class ExecutiveEntity extends AppCompatActivity {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Position FROM executives as v, members as m WHERE v.ID_no="+id+" AND v.ID_no = m.ID_no");
             if (rs.next()) {
-                this.id = (EditText) findViewById(R.id.id);
+                this.id = (EditText) findViewById(R.id.name);
                 this.id.setText(String.valueOf(rs.getInt(1)));
 
                 name = (EditText) findViewById(R.id.name);
@@ -92,7 +94,7 @@ public class ExecutiveEntity extends AppCompatActivity {
                 faculty.setText(rs.getString(4));
 
                 joindate = (EditText) findViewById(R.id.joindate);
-                joindate.setText(String.valueOf(rs.getDate(5)));
+                joindate.setText(rs.getString(5));
 
 
                 paid = (CheckBox) findViewById(R.id.paid);
@@ -101,7 +103,7 @@ public class ExecutiveEntity extends AppCompatActivity {
 
 
                 position = (EditText) findViewById(R.id.position);
-                position.setText(String.valueOf(rs.getString(7)));
+                position.setText(rs.getString(7));
             }
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());

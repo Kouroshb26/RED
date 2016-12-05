@@ -1,6 +1,5 @@
 package kourosh.red;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -66,7 +65,7 @@ public class VolunteerEntity extends AppCompatActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(this,MainActivity.class));
+                finish();
                 return true;
             case R.id.delete:
                 try {
@@ -75,7 +74,7 @@ public class VolunteerEntity extends AppCompatActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(this,MainActivity.class));
+                finish();
                 return true;
 
         }
@@ -94,7 +93,7 @@ public class VolunteerEntity extends AppCompatActivity {
             ResultSet rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Rating,v.Total_hours FROM volunteer as v, members as m WHERE v.ID_no="+id+" AND v.ID_no = m.ID_no");
             if (rs.next()) {
                 this.id = (EditText) findViewById(R.id.id);
-                this.id.setText(String.valueOf(rs.getInt(1)));
+                this.id.setText(rs.getString(1));
 
                 name = (EditText) findViewById(R.id.name);
                 name.setText(rs.getString(2));
@@ -106,18 +105,18 @@ public class VolunteerEntity extends AppCompatActivity {
                 faculty.setText(rs.getString(4));
 
                 joindate = (EditText) findViewById(R.id.joindate);
-                joindate.setText(String.valueOf(rs.getDate(5)));
+                joindate.setText(rs.getString(5));
 
 
                 paid = (CheckBox) findViewById(R.id.paid);
                 boolean state = rs.getInt(6) == 1;
                 paid.setChecked(state);
 
-                rating.setText(String.valueOf(rs.getInt(7)));
+                rating.setText((rs.getString(7)));
                 sb.setProgress(rs.getInt(7));
 
                 totalhours = (EditText) findViewById(R.id.totalhours);
-                totalhours.setText(String.valueOf(rs.getInt(8)));
+                totalhours.setText(rs.getString(8));
             }
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
