@@ -36,6 +36,8 @@ public class Volunteers extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Intent intent = new Intent(getActivity(),VolunteerEntity.class);
+                ArrayList<Volunteer> volunteers = Volunteer.getVolunteers();
+                intent.putExtra("id",volunteers.get(position).id);
                 startActivity(intent);
             }
 

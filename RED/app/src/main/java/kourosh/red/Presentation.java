@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class Presentation {
     protected String drug;
-    protected boolean finished;
+    protected int finished;
 
 
 
-    public Presentation(String drug, boolean finished){
+    public Presentation(String drug, int finished){
         this.drug = drug;
         this.finished = finished;
     }
@@ -31,7 +31,7 @@ public class Presentation {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT Drug,Finished FROM presentation ORDER BY Drug ASC");
             while(rs.next()){
-                Presentation vol = new Presentation(rs.getString(1),rs.getBoolean(2));
+                Presentation vol = new Presentation(rs.getString(1),rs.getInt(2));
                 result.add(vol);
             }
 
@@ -41,4 +41,7 @@ public class Presentation {
         }
         return result;
     }
+
+
+
 }

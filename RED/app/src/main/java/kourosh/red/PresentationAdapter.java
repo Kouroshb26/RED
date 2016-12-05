@@ -49,9 +49,8 @@ public class PresentationAdapter extends BaseAdapter {
         tv.setText(String.valueOf(presentation.drug));
 
         tv = (TextView)rowPresenation.findViewById(R.id.finished);
-        String finish =(presentation.finished)? "Yes":"No";
+        String finish = (presentation.finished==1)? "Yes":"No";
         tv.setText(finish);
-
 
 
         return rowPresenation;

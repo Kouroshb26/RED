@@ -16,6 +16,7 @@ public class Executives extends Fragment {
     View view;
     ExecutiveAdapter adapter;
     ListView lv;
+    ArrayList<Executive> executives;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -24,13 +25,14 @@ public class Executives extends Fragment {
 
 
         final SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        ArrayList<Executive> executives = Executive.getExecutive();
+        executives = Executive.getExecutive();
         adapter = new ExecutiveAdapter(getContext(), executives);
         lv = (ListView) view.findViewById(R.id.lv);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                Intent intent = new Intent(getActivity(), VolunteerEntity.class);
+                Intent intent = new Intent(getActivity(), ExecutiveEntity.class);
+                intent.putExtra("id",executives.get(position).id);
                 startActivity(intent);
             }
         });
@@ -48,7 +50,7 @@ public class Executives extends Fragment {
     }
     public void onResume() {
         super.onResume();
-        ArrayList<Executive> executives = Executive.getExecutive();
+        executives = Executive.getExecutive();
         adapter.update(executives);
         lv.setAdapter(adapter);
     }

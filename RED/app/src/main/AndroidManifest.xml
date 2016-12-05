@@ -22,7 +22,32 @@
         </activity>
         <activity
             android:name=".VolunteerEntity"
-            android:label="@string/title_activity_volunteer_entity"
+            android:label="Volunteer"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ExecutiveEntity"
+            android:label="Executive"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".EquipmentEntity"
+            android:label="Equipment"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".EventEntity"
+            android:label="Event"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".PresentationEntity"
+            android:label="Presentation"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".MeetingEntity"
+            android:label="Meeting"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>

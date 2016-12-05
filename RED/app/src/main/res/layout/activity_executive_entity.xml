@@ -151,60 +151,12 @@
         android:layout_below="@+id/joindate"
         android:layout_alignStart="@+id/email" />
 
-    <SeekBar
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:max="10"
-        android:progress="1"
-        android:id="@+id/seekBar"
-        android:layout_alignBottom="@+id/textView9"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/rating"
-        />
-
-    <TextView
-        android:text="Rating:"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView9"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/rating"
-        android:layout_alignBottom="@+id/rating"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:textColor="@color/colorPrimary"
-        android:ems="10"
-        android:id="@+id/rating"
-        android:layout_below="@+id/paid"
-        android:layout_alignStart="@+id/name" />
-
-    <TextView
-        android:text="Total hours:"
-        android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView17"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/totalhours"
-        android:layout_alignBottom="@+id/totalhours"
-        android:layout_alignParentStart="true" />
-
     <TextView
         android:text="Paid:"
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView15"
+        android:id="@+id/textView"
         android:layout_marginRight="5dp"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
@@ -215,21 +167,25 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="President"
         android:ems="10"
-        android:enabled="false"
-        android:id="@+id/totalhours"
-        android:text="32"
+        android:id="@+id/position"
+        android:layout_below="@+id/paid"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView15" />
+
+    <TextView
+        android:text="Position:"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView15"
+        android:layout_marginRight="5dp"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:layout_below="@+id/rating"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView17" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lv"
-        android:layout_below="@+id/totalhours"
+        android:layout_alignBaseline="@+id/position"
+        android:layout_alignBottom="@+id/position"
         android:layout_alignParentStart="true" />
 
 

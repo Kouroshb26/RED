@@ -1,6 +1,5 @@
 package kourosh.red;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,41 +8,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.SeekBar;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class VolunteerEntity extends AppCompatActivity {
-    SeekBar sb;
-    EditText rating;
+public class ExecutiveEntity extends AppCompatActivity {
+
+
     EditText id;
     EditText name;
     EditText email;
     EditText faculty;
     EditText joindate;
     CheckBox paid;
-    EditText totalhours;
+    EditText position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_entity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        int id = getIntent().getExtras().getInt("id");
-        rating = (EditText) findViewById(R.id.rating);
-        sb = (SeekBar) findViewById(R.id.seekBar);
-        getvolunteer(id);
         setSupportActionBar(toolbar);
-        seekbar();
-
-//        ListView lv = (ListView) findViewById(R.id.lv);
-//        lv.setAdapter();
-
-
-
+        int id = getIntent().getExtras().getInt("id");
+        getexecutive(id);
 
     }
 
@@ -55,18 +43,19 @@ public class VolunteerEntity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         Connection conn = MainActivity.connectionclass();
+
         switch (item.getItemId()) {
             case R.id.save:
                 try {
                     Statement stmt = conn.createStatement();
-                    stmt.executeUpdate("UPDATE volunteer SET Rating =\"" + rating.getText() + "\" WHERE ID_no =\"" + id.getText() + "\"");
+                    stmt.executeUpdate("UPDATE executives SET Position =\"" + position.getText() + "\" WHERE ID_no =\"" + id.getText() + "\"");
                     int state = (paid.isChecked()) ? 1 : 0;
                     stmt.executeUpdate("UPDATE members SET Name=\"" + name.getText() + "\", Email =\"" + email.getText() + "\", Faculty =\"" + faculty.getText() + "\", Join_Date =\"" + joindate.getText() + "\", Paid =\"" + state + "\" WHERE ID_no =\"" + id.getText() + "\"");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(this,MainActivity.class));
                 return true;
             case R.id.delete:
                 try {
@@ -75,23 +64,20 @@ public class VolunteerEntity extends AppCompatActivity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(this,MainActivity.class));
                 return true;
 
         }
+
+
         return super.onOptionsItemSelected(item);
     }
-
-    protected void getvolunteer(int id){
-
-
-
+    protected void getexecutive(int id){
         Connection conn = MainActivity.connectionclass();
 
         try {
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Rating,v.Total_hours FROM volunteer as v, members as m WHERE v.ID_no="+id+" AND v.ID_no = m.ID_no");
+            ResultSet rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Position FROM executives as v, members as m WHERE v.ID_no="+id+" AND v.ID_no = m.ID_no");
             if (rs.next()) {
                 this.id = (EditText) findViewById(R.id.id);
                 this.id.setText(String.valueOf(rs.getInt(1)));
@@ -113,35 +99,13 @@ public class VolunteerEntity extends AppCompatActivity {
                 boolean state = rs.getInt(6) == 1;
                 paid.setChecked(state);
 
-                rating.setText(String.valueOf(rs.getInt(7)));
-                sb.setProgress(rs.getInt(7));
 
-                totalhours = (EditText) findViewById(R.id.totalhours);
-                totalhours.setText(String.valueOf(rs.getInt(8)));
+                position = (EditText) findViewById(R.id.position);
+                position.setText(String.valueOf(rs.getString(7)));
             }
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }
-    }
-
-
-    protected void seekbar(){
-
-        sb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                rating.setText(String.valueOf(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
 
     }
 
