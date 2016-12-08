@@ -8,12 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SeekBar;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class VolunteerEntity extends AppCompatActivity {
     SeekBar sb;
@@ -90,7 +92,7 @@ public class VolunteerEntity extends AppCompatActivity {
         try {
 
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Rating,v.Total_hours FROM volunteer as v, members as m WHERE v.ID_no="+id+" AND v.ID_no = m.ID_no");
+            ResultSet rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Rating,sum(i.Hours)FROM volunteer as v, members as m,involved_in as i WHERE v.ID_no="+id+" AND v.ID_no = i.ID_no AND v.ID_no = m.ID_no");
             if (rs.next()) {
                 this.id = (EditText) findViewById(R.id.id);
                 this.id.setText(rs.getString(1));
@@ -118,6 +120,16 @@ public class VolunteerEntity extends AppCompatActivity {
                 totalhours = (EditText) findViewById(R.id.totalhours);
                 totalhours.setText(rs.getString(8));
             }
+            rs = stmt.executeQuery("SELECT School_name,Date,Section_no FROM involved_in WHERE ID_no="+id);
+            ArrayList<String> sections = new ArrayList<>();
+            while (rs.next()){
+               sections.add(rs.getString(1)+"   "+rs.getString(2)+"   "+rs.getString(3));
+            }
+            ListView lv = (ListView) findViewById(R.id.lv);
+            VolunteerSectionAdapter adapter = new VolunteerSectionAdapter(this,sections);
+            lv.setAdapter(adapter);
+
+
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }

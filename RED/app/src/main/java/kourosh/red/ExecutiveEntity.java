@@ -105,6 +105,8 @@ public class ExecutiveEntity extends AppCompatActivity {
                 position = (EditText) findViewById(R.id.position);
                 position.setText(rs.getString(7));
             }
+
+
         } catch (Exception e) {
             Log.e("Error: ", e.getMessage());
         }

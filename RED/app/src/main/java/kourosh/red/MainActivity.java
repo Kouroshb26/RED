@@ -29,7 +29,7 @@ import java.sql.DriverManager;
 import static android.R.id.primary;
 
 public class MainActivity extends FragmentActivity {
-    protected static Connection connection = null;
+    private static Connection connection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,22 @@ public class MainActivity extends FragmentActivity {
 
         // Set the ViewPagerAdapter into ViewPager
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        String connectionURL;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connectionURL = "jdbc:mysql://68.147.220.198:3306/cpsc471";
+            connection = DriverManager.getConnection(connectionURL, "root", "aldeko16");
+        } catch (Exception e) {
+            Log.e("Error: ", e.getMessage());
+        }
 
     }
 
@@ -60,6 +76,7 @@ public class MainActivity extends FragmentActivity {
                 Log.e("Error: ", e.getMessage());
             }
         }
+
         return connection;
     }
 }

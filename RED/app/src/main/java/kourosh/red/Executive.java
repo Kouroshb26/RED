@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Created by Kourosh on 2016-12-03.
  */
 
-public class Executive {
+public class  Executive {
     protected int id;
     protected String name;
     protected String position;
