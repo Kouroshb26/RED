@@ -38,12 +38,19 @@ public class VolunteerSectionAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup parent) {
-        View rowSection = mInflater.inflate(R.layout.volunteersection, parent,false);
-        String section = sectionlist.get(i);
+        View rowSection = mInflater.inflate(R.layout.volunteer, parent,false);
+        String[] section = sectionlist.get(i).split(",");
 
 
-        TextView tv = (TextView)rowSection.findViewById(R.id.section);
-        tv.setText(section);
+        TextView tv = (TextView)rowSection.findViewById(R.id.id_volenteer);
+        tv.setText(section[0]);
+
+
+        tv = (TextView) rowSection.findViewById(R.id.name);
+        tv.setText(section[1]);
+
+        tv = (TextView) rowSection.findViewById(R.id.hours);
+        tv.setText(section[2]);
 
 
         return rowSection;

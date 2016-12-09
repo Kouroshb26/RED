@@ -132,12 +132,38 @@
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:id="@+id/fab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lv"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView30" />
+
+    <TextView
+        android:text="Section#"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView30"
         android:layout_below="@+id/textView18"
-        android:layout_alignParentStart="true" />
+        android:layout_alignEnd="@+id/textView7" />
+
+    <TextView
+        android:text="Room#"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView31"
+        android:layout_below="@+id/textView18"
+        android:layout_toStartOf="@+id/fab" />
 
 
 </RelativeLayout>

@@ -155,7 +155,7 @@ public class VolunteerEntity extends AppCompatActivity {
             rs = stmt.executeQuery("SELECT School_name,Date,Section_no FROM involved_in WHERE ID_no="+id);
             ArrayList<String> sections = new ArrayList<>();
             while (rs.next()){
-               sections.add(rs.getString(1)+"   "+rs.getString(2)+"   "+rs.getString(3));
+               sections.add(rs.getString(1)+","+rs.getString(2)+","+rs.getString(3));
             }
             ListView lv = (ListView) findViewById(R.id.lv);
             VolunteerSectionAdapter adapter = new VolunteerSectionAdapter(this,sections);

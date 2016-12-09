@@ -10,7 +10,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 6;
     // Tab Titles
-    private String tabtitles[] = new String[] { "Volenteers", "Executives","Meetings","Events","Presentations","Equipments", };
+    private String tabtitles[] = new String[] { "Volunteers", "Executives","Meetings","Events","Presentations","Equipments", };
     Context context;
 
     public ViewPagerAdapter(FragmentManager fm) {

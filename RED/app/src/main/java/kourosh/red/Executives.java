@@ -67,7 +67,7 @@ public class Executives extends Fragment {
                 aDB.setView(promptsView);
 
                 final TextView title = (TextView) promptsView.findViewById(R.id.title);
-                title.setText("Add ID");
+                title.setText("Executive ID:");
 
                 final EditText ev = (EditText) promptsView.findViewById(R.id.input);
                 ev.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);

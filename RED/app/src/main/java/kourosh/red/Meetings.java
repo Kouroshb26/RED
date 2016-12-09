@@ -74,7 +74,7 @@ public class Meetings extends Fragment {
                 aDB.setView(promptsView);
 
                 final TextView title = (TextView) promptsView.findViewById(R.id.title);
-                title.setText("Add Name");
+                title.setText("Meeting Name:");
 
                 final EditText ev = (EditText) promptsView.findViewById(R.id.input);
                 ev.setInputType(InputType.TYPE_CLASS_TEXT);

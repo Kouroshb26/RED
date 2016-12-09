@@ -1,11 +1,16 @@
 package kourosh.red;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -54,6 +60,54 @@ public class EventEntity extends AppCompatActivity {
                 intent.putExtra("date",String.valueOf(date_name));
                 intent.putExtra("section",sections.get(i).section);
                 startActivity(intent);
+            }
+        });
+
+
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                LayoutInflater li = LayoutInflater.from(EventEntity.this);
+                View promptsView = li.inflate(R.layout.popupinputtext, null);
+
+                AlertDialog.Builder aDB = new AlertDialog.Builder(EventEntity.this);
+                aDB.setView(promptsView);
+
+                final TextView title = (TextView) promptsView.findViewById(R.id.title);
+                title.setText("Section Number:");
+
+                final EditText ev = (EditText) promptsView.findViewById(R.id.input);
+                ev.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                aDB
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Connection conn = MainActivity.connectionclass();
+                                try {
+                                    Statement stmt = conn.createStatement();
+                                    stmt.execute("INSERT INTO section(School_name,Date,Section_no) VALUES(\""+school.getText()+"\",\""+date.getText()+"\",\""+ev.getText()+"\")");
+
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+
+                                onResume();
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog aD = aDB.create();
+                aD.show();
             }
         });
 
