@@ -119,7 +119,39 @@ public class VolunteerEntity extends AppCompatActivity {
 
                 totalhours = (EditText) findViewById(R.id.totalhours);
                 totalhours.setText(rs.getString(8));
+            }else{
+                rs = stmt.executeQuery("SELECT v.ID_no,m.Name,m.Email,m.Faculty,m.Join_Date,m.Paid,v.Rating FROM volunteer as v, members as m WHERE v.ID_no="+id+" AND v.ID_no = m.ID_no");
+                if(rs.next()){
+                    this.id = (EditText) findViewById(R.id.id);
+                    this.id.setText(rs.getString(1));
+
+                    name = (EditText) findViewById(R.id.name);
+                    name.setText(rs.getString(2));
+
+                    email = (EditText) findViewById(R.id.email);
+                    email.setText(rs.getString(3));
+
+                    faculty = (EditText) findViewById(R.id.faculty);
+                    faculty.setText(rs.getString(4));
+
+                    joindate = (EditText) findViewById(R.id.joindate);
+                    joindate.setText(rs.getString(5));
+
+
+                    paid = (CheckBox) findViewById(R.id.paid);
+                    boolean state = rs.getInt(6) == 1;
+                    paid.setChecked(state);
+
+                    rating.setText((rs.getString(7)));
+                    sb.setProgress(rs.getInt(7));
+
+                    totalhours = (EditText) findViewById(R.id.totalhours);
+                    totalhours.setText("0");
+                }
+
+
             }
+
             rs = stmt.executeQuery("SELECT School_name,Date,Section_no FROM involved_in WHERE ID_no="+id);
             ArrayList<String> sections = new ArrayList<>();
             while (rs.next()){

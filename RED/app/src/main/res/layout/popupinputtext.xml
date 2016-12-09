@@ -24,4 +24,13 @@
         android:textAlignment="center"
         android:ems="10"
         android:id="@+id/input" />
+    <EditText
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:text=""
+        android:textAlignment="center"
+        android:ems="10"
+        android:id="@+id/input2" />
 </LinearLayout>
