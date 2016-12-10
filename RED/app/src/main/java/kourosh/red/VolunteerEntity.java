@@ -61,7 +61,7 @@ public class VolunteerEntity extends AppCompatActivity {
             case R.id.save:
                 try {
                     Statement stmt = conn.createStatement();
-                    stmt.executeUpdate("UPDATE volunteer SET Rating =\"" + rating.getText() + "\" WHERE ID_no =\"" + id.getText() + "\"");
+                    stmt.executeUpdate("UPDATE volunteer SET Rating =\"" + rating.getText() + "\", Total_hours =\"" + totalhours.getText()+ "\" WHERE ID_no =\"" + id.getText() + "\"");
                     int state = (paid.isChecked()) ? 1 : 0;
                     stmt.executeUpdate("UPDATE members SET Name=\"" + name.getText() + "\", Email =\"" + email.getText() + "\", Faculty =\"" + faculty.getText() + "\", Join_Date =\"" + joindate.getText() + "\", Paid =\"" + state + "\" WHERE ID_no =\"" + id.getText() + "\"");
                 } catch (SQLException e) {
